@@ -6,8 +6,7 @@
 }
 
 body{
-    background-image: linear-gradient(  rgb(221, 237, 248),rgb(31, 123, 209), rgba(42, 184, 240, 0.808));
-    height: 100vh;
+    background-color: rgba(174, 209, 221, 0.918);
 }
 #header{
     display: flex;
@@ -51,9 +50,10 @@ input{
 /* Estilo para la pagina para registar vehiculo*/
 .head__div{
     display: grid;
-    grid-template-columns: 1fr 1fr ;
-    padding: 25px;
-    width: 100vh;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    padding: 15px 25px;
+    width: 100%;
     
 }
 
@@ -68,17 +68,22 @@ input{
     margin: 15px;
 }
 .main{
+    padding: 10px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     height: 100vh;
     margin: 2px;
+    min-width: calc(100hv-100px);
+    gap: 30px;
 }
 #formulario{
+    border-radius: 50px;
     border: 1px solid white;
     background-color: rgba(235, 241, 245, 0.918);
     width: 300px;
     height: 350px;
+    min-height: 480px;
     border-radius: 10px;
     padding: 10px;
     display: block;
@@ -98,3 +103,27 @@ input{
     color: rgb(22, 71, 145);
     margin: 10px;
 }
+/*Decoracion de los vehiculos*/
+.vehiculo{
+    width: 65px;
+    display: inline-flex;
+}
+#boton{
+    margin: 13px;
+    border-radius: 5px;
+    padding: 5px;
+}
+.seccion1{
+    margin: 45px;
+    padding: 20px;
+}
+.main__div{
+    display: flex;
+    border: 1px solid white;
+    background-color: rgb(167, 207, 232);
+    border-radius: 50px;
+}
+.subtitilo{
+    text-align: center;
+}
+

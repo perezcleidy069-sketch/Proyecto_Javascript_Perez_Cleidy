@@ -5,14 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrar vehículo</title>
     <link rel="stylesheet" href="./CSS/style.css">
+
 </head>
 <body>
     <header id="header">
+        <div class="div__logo">
+            <img src="./IMG/log.png" alt="Logo del parqueadero" class="logo">
+            <h2 class="nombre__parqueo">CampusParking</h2>
+        </div>
         <div class="head__div">
             <a href="./index.html"><img src="./IMG/regresar.png" alt="Flecha para regresar" class="Flecha"></a>
-            <div class="div__logo">
-                <img src="./IMG/log.png" alt="Logo del parqueadero" class="logo">
-                <h2 class="nombre__parqueo">CampusParking</h2>
+            <div id="conteo-info">
+                <p>Vacíos: <span id="total-vacios">30</span></p>
+                <p>Ocupados: <span id="total-ocupados">0</span></p>
             </div>
         </div>
     </header><hr>
@@ -42,15 +47,51 @@
             <input type="time" id="hora" required><br>
 
             <div>
-                <a href="./asignarLugar.html" >Asignar Lugar <span id="botons" class="seleccionar__boton"></span></a><br>
-                <a href="./marcasVehiculos.html">Seleccionar Marca del vehículo: <span id="marca" class="seleccionar__boton"></span></a>
-            </div>
+                <label for="text">Asignar un lugar</label><br>
+                <input type="number" min="1" max="30" id="lugar">
 
+            </div>
             <input type="hidden" id="lugarOculto">
             <input type="hidden" id="marcaOculta">
-            <button type="submit">Registrar ingreso</button>
+            <button type="submit">Guadar</button>
             <button class="boto" id="botons">Mostrar</button>
         </form>
+        <div class="main__div">
+            
+            <section class="seccion1" id="carro">
+                <h2 class="subtitulo">Lugar de parqueo</h2>
+                <button id="boton"><img src="./IMG/carro.png" alt="Icono de un carro" class="vehiculo">C-1</button>
+                <button id="boton"><img src="./IMG/carro.png" alt="Icono de un carro" class="vehiculo">C-2</button>
+                <button id="buton" class="slot"><img src="./IMG/carro.png" alt="Icono de un carro" class="vehiculo">C-3</button>
+                <button id="buton" class="slot"><img src="./IMG/carro.png" alt="Icono de un carro" class="vehiculo">C-4</button>
+                <button id="buton" class="slot"><img src="./IMG/carro.png" alt="Icono de un carro" class="vehiculo">C-5</button>
+                <button id="buton" class="slot"><img src="./IMG/carro.png" alt="Icono de un carro" class="vehiculo">C-6</button>
+                <button id="buton" class="slot"><img src="./IMG/carro.png" alt="Icono de un carro" class="vehiculo">C-7</button>
+                <button id="buton" class="slot"><img src="./IMG/carro.png" alt="Icono de un carro" class="vehiculo">C-8</button>
+                <button id="buton" class="slot"><img src="./IMG/carro.png" alt="Icono de un carro" class="vehiculo">C-9</button>
+                <button id="buton" class="slot"><img src="./IMG/carro.png" alt="Icono de un carro" class="vehiculo">C-10</button>
+                <button id="buton" class="slot"><img src="./IMG/carro.png" alt="Icono de un carro" class="vehiculo">M-1</button>
+                <button id="buton" class="slot"><img src="./IMG/carro.png" alt="Icono de un carro" class="vehiculo">M-2</button>
+                <button id="buton" class="slot"><img src="./IMG/carro.png" alt="Icono de un carro" class="vehiculo">M-3</button>
+                <button id="buton" class="slot"><img src="./IMG/carro.png" alt="Icono de un carro" class="vehiculo">M-4</button>
+                <button id="buton" class="slot"><img src="./IMG/carro.png" alt="Icono de un carro" class="vehiculo">M-5</button>
+                <button id="buton" class="slot"><img src="./IMG/carro.png" alt="Icono de un carro" class="vehiculo">M-6</button>
+                <button id="buton" class="slot"><img src="./IMG/carro.png" alt="Icono de un carro" class="vehiculo">M-7</button>
+                <button id="buton" class="slot"><img src="./IMG/carro.png" alt="Icono de un carro" class="vehiculo">M-8</button>
+                <button id="buton" class="slot"><img src="./IMG/carro.png" alt="Icono de un carro" class="vehiculo">M-9</button>
+                <button id="buton" class="slot"><img src="./IMG/carro.png" alt="Icono de un carro" class="vehiculo">M-10</button>
+                <button id="buton" class="slot"><img src="./IMG/carro.png" alt="Icono de un carro" class="vehiculo">B-1</button>
+                <button id="buton" class="slot"><img src="./IMG/carro.png" alt="Icono de un carro" class="vehiculo">B-2</button>
+                <button id="buton" class="slot"><img src="./IMG/carro.png" alt="Icono de un carro" class="vehiculo">B-3</button>
+                <button id="buton" class="slot"><img src="./IMG/carro.png" alt="Icono de un carro" class="vehiculo">B-4</button>
+                <button id="buton" class="slot"><img src="./IMG/carro.png" alt="Icono de un carro" class="vehiculo">B-5</button>
+                <button id="buton" class="slot"><img src="./IMG/carro.png" alt="Icono de un carro" class="vehiculo">B-6</button>
+                <button id="buton" class="slot"><img src="./IMG/carro.png" alt="Icono de un carro" class="vehiculo">B-7</button>
+                <button id="buton" class="slot"><img src="./IMG/carro.png" alt="Icono de un carro" class="vehiculo">B-8</button>
+                <button id="buton" class="slot"><img src="./IMG/carro.png" alt="Icono de un carro" class="vehiculo">B-9</button>
+                <button id="buton" class="slot"><img src="./IMG/carro.png" alt="Icono de un carro" class="vehiculo">B-10</button>
+            </section>
+        </div>
     </main>
     <script src="./javascripts/registar.js"></script>
 </body>
