@@ -4,8 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil</title>
+    <link rel="stylesheet" href="./CSS/estiloHisto.css">
 </head>
 <body>
-  
+    <header id="header">
+        <div class="logo__div">
+            <img src="./IMG/log.png" alt="Logo del parqueadero" class="logo">
+            <p class="text">CampusParking</p>
+        </div>
+    </header>
+    <main class="main">
+        <div class="main__div">
+            <div>
+                <img src="./IMG/perfil.png" alt="Icono de perfil" class="imagen">
+           </div>
+           <div id="container">
+            <p class="texto__info">Nombre:<span id="tex__nombre">Amdin</span><p>
+            <p class="texto__info">Correo: <span id="tex__correo">admin@campusparking.com</span></p>
+           </div>
+
+           <div id="edit__container" hidden>
+            <input type="text" id="input__nombre" class="cambiar__texto" placeholder="Nombre">
+            <input type="email" id="input__correo" class="cambiar__texto" placeholder="Correo">
+            <input type="password" id="input__contraseña" class="cambiar__texto" placeholder="Contraseña">
+            <button class="boti" id="btn-guardar">Guardar</button>
+            </div>
+           <div class="boton__div">
+            <button class="boti" id="btn-editar">Editar</button>
+            <a href="./index.html" class="cerrar">❌Cerrar</a>
+           </div>
+        </div>
+</main>
+<script src="./javascripts/editarPerfil.js"></script>
 </body>
 </html>

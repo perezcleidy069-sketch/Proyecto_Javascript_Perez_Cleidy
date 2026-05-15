@@ -5,9 +5,8 @@
 }
 
 body{
-    background-image: linear-gradient(  rgb(221, 237, 248),rgb(31, 123, 209), rgba(42, 184, 240, 0.808));
-    height: 100vh;
-    display: flex;
+    background-image: linear-gradient(  rgb(215, 229, 238),rgb(31, 123, 209), rgba(42, 184, 240, 0.808));
+    display: block;
 }
 /*Decoracion del encabezado*/
 
@@ -19,7 +18,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgb(255, 255, 255);
+    background-color: rgba(245, 232, 232, 0.829);
     border-bottom: 2px solid rgba(255, 255, 255, 0.856);
     height: 60px;
 }
@@ -43,8 +42,8 @@ body{
 .logo{
     width: 50px;
 }
-.nombre__parqueo{
-    color: rgb(4, 83, 136);
+.text{
+    color: rgb(13, 68, 105);
 }
 .logo{
     display: flex;
@@ -67,7 +66,55 @@ body{
 
 .search__input:hover{
     width: 300px;
+    display: block;
+    margin: auto;
+    padding: 20px;
 
 }
-
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px;
+}
+.main__div{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid white;
+    border-radius: 40px;
+    background-color: rgba(245, 232, 232, 0.829);
+    box-shadow: 5px 5px 5px 0px rgb(224, 214, 214) ;
+    overflow: hidden;
+    align-items: center;
+}
+.imagen{
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.texto__info{
+    padding: 5px;
+    margin: 10px;
+    text-align: center;
+    color: rgba(67, 67, 158, 0.915);
+    font-size: 30px;
+}
+.boton__div{
+    margin: 15%;
+    padding:40px;
+}
+.boti{
+    margin: 5px;
+    padding: 10px;
+    border-radius: 10px;
+}
+.cerrar{
+    text-decoration: navajowhite;
+    border: 1px solid white;
+    background-color: rgb(221, 42, 42);
+    border-radius: 10px;
+    color: white;
+    padding:8px;
+}
 
