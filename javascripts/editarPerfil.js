@@ -28,14 +28,24 @@ let correoSesion=localStorage.getItem('correoActivo')
 });
 //Para guardar los datos que se editatoron
 document.getElementById("btn-guardar").addEventListener('click', ()=>{
+    let user={}
     user.nombre=document.getElementById("input__nombre").value;
     user.correo=document.getElementById("input__correo").value;
     user.contraseña=document.getElementById("input__contraseña").value;
-
-
+    console.log(user)
     localStorage.setItem('registrar', JSON.stringify (listaUsuario));
     localStorage.setItem('correoActivo', user.correo);
 
     alert("Datos actualizados ✅");
     location.reload();
 })
+
+//Cerrar sesiòn revisar 
+const loguout=()=>{
+    sessionStorage.removeItem('token')
+    window.location='./index.html'
+}
+
+const cerrar=document.querySelector('click',"cerrar")
+
+cerrar.addEventListener('click' cerrar)
