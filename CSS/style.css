@@ -6,15 +6,18 @@
 }
 
 body{
-    background-color: rgba(174, 209, 221, 0.918);
+    background-color: rgba(227, 243, 240, 0.89);
 }
 #header{
     display: flex;
 }
 .div__header{
-    display: grid;
-    grid-template-columns: 1fr 1fr ;
-    padding:25px;
+    border: 1px solid white;
+    background-color: rgba(245, 232, 232, 0.829);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
 
 }
 .logo{
@@ -23,29 +26,82 @@ body{
 .nombre__logo{
     color: rgb(54, 39, 39);
 }
+.imagene{
+    display: flex;
+    flex-direction: column;
+}
 
 .login{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 85vh;
 }
 .login__registrar{
-    border: 1px solid white;
-    background-color: rgb(255, 255, 255);
-    width: 500px;
-    height: 600px;
-    border-radius: 10px;
-    box-shadow: 5px 5px 5cqw 2px rgba(8, 58, 99, 0.932);
+    width: 400px;
+    height: 550px;
     align-content: center;
     justify-items: center;
 }
 .letras{
     color: rgb(16, 16, 177);
+    margin: 115px;
+    font-family: 160px;
+}
+#nombre, #correo, #contraseña{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid blue;
+    background-color: lightblue;
 }
 input{
     border-radius: 5px;
     margin-bottom: 10px;
+}
+.boton-registrarse{
+    text-decoration: none;
+}
+.registross{
+    border: 1px solid rgb(114, 191, 216);
+    background-color: white;
+    border-radius: 10px;
+    width: 100px;
+    height: 30px;
+}
+.boton-ingres{
+    display: flex;
+    justify-content: center;
+    padding: 0;
+}
+#boto{
+    border: 1px solid  rgb(114, 191, 216);
+    background-color: white;
+    border-radius: 15px;
+    
+}
+
+.new-registros{
+    display: flex;
+    justify-content:right;
+    padding-top: 10px;
+    padding-right: 10px;
+}
+@media (min-width:800px){
+    .login__registrar{
+        border: 1px solid white;
+        background-color: rgb(255, 255, 255);
+        width: 400px;
+        height: 550px;
+        border-radius: 10px;
+        box-shadow: 5px 5px 5cqw 2px rgba(84, 129, 167, 0.932);
+        align-content: center;
+        justify-items: center;
+    }
+    .letras{
+    color: rgb(16, 16, 177);
+    margin: 115px;
+}
 }
 /* Estilo para la pagina para registar vehiculo*/
 .head__div{
