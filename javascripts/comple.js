@@ -38,13 +38,28 @@ if (form) {
 // ==========================================
 // 2. REGISTRO (Múltiples Usuarios)
 // ==========================================
+// ==========================================
+// 2. REGISTRO (Múltiples Usuarios)
+// ==========================================
 const form2 = document.getElementById("login-registro");
 
 const registro = (e) => {
     e.preventDefault();
-    const nombre = document.getElementById("nombre1").value.trim();
-    const correo = document.getElementById("correo1").value.trim();
-    const contra = document.getElementById("password1").value.trim();
+    
+    // Capturamos los elementos asegurando que existan en el HTML
+    const inputNombre = document.getElementById("nombre1");
+    const inputCorreo = document.getElementById("correo1");
+    const inputPassword = document.getElementById("password1");
+
+    // Si por alguna razón falta un campo, detenemos la función para que no rompa la consola
+    if (!inputNombre || !inputCorreo || !inputPassword) {
+        console.error("Error: No se encontraron todos los campos del formulario en el HTML.");
+        return;
+    }
+
+    const nombre = inputNombre.value.trim();
+    const correo = inputCorreo.value.trim();
+    const contra = inputPassword.value.trim();
     
     // 1. Obtener la lista de usuarios que ya existen (o crear una vacía)
     const listaUsuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
@@ -53,17 +68,17 @@ const registro = (e) => {
     const existeCorreo = listaUsuarios.some(user => user.correo === correo);
     if (existeCorreo) {
         alert("Este correo ya está registrado. Intenta iniciar sesión.");
-        return; // Detiene la función aquí
+        return; 
     }
 
-    // 3. Crear el nuevo usuario
+    // 3. Crear el nuevo usuario (usamos la palabra estándar password)
     const nuevosDatos = {
         usuario: nombre,
         correo: correo,
         password: contra
     };
     
-    // 4. Agregar el nuevo usuario a la lista existente sin borrar los anteriores
+    // 4. Agregar el nuevo usuario a la lista
     listaUsuarios.push(nuevosDatos);
     
     // 5. Guardar la lista actualizada en LocalStorage
