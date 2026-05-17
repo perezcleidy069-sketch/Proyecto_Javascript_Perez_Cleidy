@@ -1,37 +1,36 @@
-// ==========================================
-// 1. LOGIN (Múltiples Usuarios)
-// ==========================================
-const mensaje = document.getElementById("mensajeError");
-const form = document.getElementById("login");
-
 function validarDatos(e) {
     e.preventDefault();
     const nombreVal = document.getElementById("nombre").value.trim();
     const correoVal = document.getElementById("correo").value.trim();
     const contraVal = document.getElementById("password").value.trim();
 
-    // Traemos la lista de usuarios, si no existe, será un array vacío []
-    const listaUsuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+    // 1. Forzar la base de datos local si está vacía en GitHub
+    let listaUsuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
 
-    // Buscamos si existe algún usuario que coincida con TODOS los datos del login
+    if (listaUsuarios.length === 0) {
+        listaUsuarios = [{
+            usuario: "admin",
+            correo: "perezcleidy069@gmail.com",
+            password: "123",
+            contrasea: "123"
+        }];
+        localStorage.setItem("usuarios", JSON.stringify(listaUsuarios));
+    }
+
+    // 2. Buscar coincidencia exacta
     const usuarioEncontrado = listaUsuarios.find(user => 
         user.usuario === nombreVal && 
         user.correo === correoVal && 
-        user.password === contraVal
+        (user.password === contraVal || user.contrasea === contraVal)
     );
 
     if (usuarioEncontrado) {
         alert(`¡Inicio exitoso! Bienvenido ${usuarioEncontrado.usuario}`);
-        // Opcional: Guardar temporalmente quién inició sesión para usar su nombre en home.html
         localStorage.setItem("usuarioActivo", JSON.stringify(usuarioEncontrado));
         window.location.href = "./home.html";
     } else {
-        mensaje.textContent = "Datos incorrectos o usuario no registrado.";
+        document.getElementById("mensajeError").textContent = "Datos incorrectos o usuario no registrado.";
     }
-}
-
-if (form) {
-    form.addEventListener('submit', validarDatos);
 }
 
 
