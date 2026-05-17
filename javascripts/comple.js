@@ -1,10 +1,27 @@
-function validarDatos(e) {
-    e.preventDefault();
-    const nombreVal = document.getElementById("nombre").value.trim();
-    const correoVal = document.getElementById("correo").value.trim();
-    const contraVal = document.getElementById("password").value.trim();
+// ==========================================
+// 1. LOGIN (Múltiples Usuarios)
+// ==========================================
+const form = document.getElementById("login");
 
-    // 1. Forzar la base de datos local si está vacía en GitHub
+function validarDatos(e) {
+    e.preventDefault(); // Detiene cualquier recarga extraña
+    
+    const nombreInput = document.getElementById("nombre");
+    const correoInput = document.getElementById("correo");
+    const passwordInput = document.getElementById("password");
+    const mensaje = document.getElementById("mensajeError");
+
+    // Validamos que los campos existan en la página antes de leer su valor
+    if (!nombreInput || !correoInput || !passwordInput) {
+        console.error("No se encontraron los campos del formulario de login en el HTML.");
+        return;
+    }
+
+    const nombreVal = nombreInput.value.trim();
+    const correoVal = correoInput.value.trim();
+    const contraVal = passwordInput.value.trim();
+
+    // 1. Forzar la base de datos local si está vacía
     let listaUsuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
 
     if (listaUsuarios.length === 0) {
@@ -12,7 +29,6 @@ function validarDatos(e) {
             usuario: "admin",
             correo: "perezcleidy069@gmail.com",
             password: "123",
-            contrasea: "123"
         }];
         localStorage.setItem("usuarios", JSON.stringify(listaUsuarios));
     }
@@ -29,14 +45,21 @@ function validarDatos(e) {
         localStorage.setItem("usuarioActivo", JSON.stringify(usuarioEncontrado));
         window.location.href = "./home.html";
     } else {
-        document.getElementById("mensajeError").textContent = "Datos incorrectos o usuario no registrado.";
+        if (mensaje) {
+            mensaje.textContent = "Datos incorrectos o usuario no registrado.";
+        } else {
+            alert("Datos incorrectos o usuario no registrado.");
+        }
     }
 }
 
+// ⚠️ ¡ESTO TE FALTABA! Conectar la función al formulario de login
+if (form) {
+    form.addEventListener('submit', validarDatos);
+    console.log("Formulario de login detectado y conectado correctamente.");
+}
 
-// ==========================================
-// 2. REGISTRO (Múltiples Usuarios)
-// ==========================================
+
 // ==========================================
 // 2. REGISTRO (Múltiples Usuarios)
 // ==========================================
@@ -45,14 +68,12 @@ const form2 = document.getElementById("login-registro");
 const registro = (e) => {
     e.preventDefault();
     
-    // Capturamos los elementos asegurando que existan en el HTML
     const inputNombre = document.getElementById("nombre1");
     const inputCorreo = document.getElementById("correo1");
     const inputPassword = document.getElementById("password1");
 
-    // Si por alguna razón falta un campo, detenemos la función para que no rompa la consola
     if (!inputNombre || !inputCorreo || !inputPassword) {
-        console.error("Error: No se encontraron todos los campos del formulario en el HTML.");
+        console.error("Error: No se encontraron todos los campos del formulario de registro en el HTML.");
         return;
     }
 
@@ -60,27 +81,21 @@ const registro = (e) => {
     const correo = inputCorreo.value.trim();
     const contra = inputPassword.value.trim();
     
-    // 1. Obtener la lista de usuarios que ya existen (o crear una vacía)
     const listaUsuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
 
-    // 2. Validar que el correo no esté registrado ya por otra persona
     const existeCorreo = listaUsuarios.some(user => user.correo === correo);
     if (existeCorreo) {
         alert("Este correo ya está registrado. Intenta iniciar sesión.");
         return; 
     }
 
-    // 3. Crear el nuevo usuario (usamos la palabra estándar password)
     const nuevosDatos = {
         usuario: nombre,
         correo: correo,
         password: contra
     };
     
-    // 4. Agregar el nuevo usuario a la lista
     listaUsuarios.push(nuevosDatos);
-    
-    // 5. Guardar la lista actualizada en LocalStorage
     localStorage.setItem("usuarios", JSON.stringify(listaUsuarios));
     
     alert("Usuario registrado con éxito. ¡Ya puedes iniciar sesión!");
@@ -89,4 +104,5 @@ const registro = (e) => {
 
 if (form2) {
     form2.addEventListener('submit', registro);
+    console.log("Formulario de registro detectado y conectado correctamente.");
 }
