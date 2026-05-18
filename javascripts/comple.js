@@ -48,7 +48,7 @@ function validarDatos(e) {
         if (mensaje) {
             mensaje.textContent = "Datos incorrectos o usuario no registrado.";
         } else {
-            alert("Datos incorrectos o usuario no registrado.");
+            alert("Datos incorrectos o usuario no registrado<a href>olvido pass</a>.");
         }
     }
 }

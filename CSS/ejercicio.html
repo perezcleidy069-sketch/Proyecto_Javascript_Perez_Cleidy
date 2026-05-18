@@ -1,0 +1,321 @@
+todo.html
+Página
+de 1
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TODO Terminal</title>
+  <link rel="styles" href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=VT323&display=swap" />
+  <style>
+    :root {
+      --color-bg: #0d0d0d;
+      --color-surface: #111;
+      --color-border: #00ff88;
+      --color-text: #00ff88;
+      --color-muted: #005533;
+      --color-accent: #ff4466;
+      --font-mono: 'Share Tech Mono', monospace;
+      --font-display: 'VT323', monospace;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      font-family: var(--font-mono);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 640px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .header h1 {
+      font-family: var(--font-display);
+      font-size: 3.5rem;
+      letter-spacing: 4px;
+      text-shadow: 0 0 20px var(--color-border);
+      text-transform: uppercase;
+    }
+
+    .header p {
+      color: var(--color-muted);
+      font-size: 0.85rem;
+      margin-top: 0.5rem;
+      letter-spacing: 2px;
+    }
+
+    .input-row {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    #task-input {
+      flex: 1;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      color: var(--color-text);
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      padding: 0.75rem 1rem;
+      outline: none;
+      transition: box-shadow 0.2s;
+    }
+
+    #task-input:focus {
+      box-shadow: 0 0 12px var(--color-border);
+    }
+
+    #add-btn {
+      background: var(--color-border);
+      color: #0d0d0d;
+      border: none;
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      font-weight: bold;
+      padding: 0.75rem 1.25rem;
+      cursor: pointer;
+      letter-spacing: 2px;
+      transition: opacity 0.2s;
+    }
+
+    #add-btn:hover {
+      opacity: 0.8;
+    }
+
+    .stats {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: var(--color-muted);
+      letter-spacing: 1px;
+      margin-bottom: 1rem;
+      padding: 0 0.25rem;
+    }
+
+    .task-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .task-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 1rem;
+      background: var(--color-surface);
+      border: 1px solid var(--color-muted);
+      transition: border-color 0.2s;
+    }
+
+    .task-item:hover {
+      border-color: var(--color-border);
+    }
+
+    .task-item.done .task-text {
+      text-decoration: line-through;
+      color: var(--color-muted);
+    }
+
+    .task-check {
+      width: 18px;
+      height: 18px;
+      border: 2px solid var(--color-border);
+      cursor: pointer;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+    }
+
+    .task-check.checked {
+      background: var(--color-border);
+      color: #0d0d0d;
+    }
+
+    .task-text {
+      flex: 1;
+      font-size: 0.95rem;
+    }
+
+    .task-delete {
+      background: none;
+      border: none;
+      color: var(--color-accent);
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      cursor: pointer;
+      padding: 0 0.25rem;
+      opacity: 0.5;
+      transition: opacity 0.2s;
+    }
+
+    .task-delete:hover {
+      opacity: 1;
+    }
+
+    .empty-msg {
+      text-align: center;
+      color: var(--color-muted);
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      padding: 2rem 0;
+    }
+
+    .scanline {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0,0,0,0.08) 2px,
+        rgba(0,0,0,0.08) 4px
+      );
+      pointer-events: none;
+      z-index: 999;
+    }
+  </style>
+</head>
+<body>
+  <div class="scanline"></div>
+
+  <div class="container">
+    <div class="header">
+      <h1>// TODO //</h1>
+      <p>&gt; SISTEMA DE TAREAS v1.0 _ LISTO</p>
+    </div>
+
+    <div class="input-row">
+      <input type="text" id="tarea-input" placeholder="> escribe una tarea..." autocomplete="off" />
+      <button id="add-btn">+ ADD</button>
+    </div>
+
+    <div class="stats">
+      <span id="total-count">TOTAL: 0</span>
+      <span id="done-count">COMPLETADAS: 0</span>
+    </div>
+
+    <ul class="task-list" id="task-list"></ul>
+    <p class="empty-msg" id="empty-msg">&gt; sin tareas en el sistema. agrega una._</p>
+  </div>
+
+  <script>
+    const input = document.getElementById('task-input');
+    const addBtn = document.getElementById('add-btn');
+    const taskList = document.getElementById('task-list');
+    const emptyMsg = document.getElementById('empty-msg');
+    const totalCount = document.getElementById('total-count');
+    const doneCount = document.getElementById('done-count');
+    const tarea=document.getElementById("tarea-input")
+
+    let tasks = [];
+
+    function renderTasks() {
+      taskList.innerHTML = '';
+
+      if (tasks.length === 0) {
+        emptyMsg.style.display = 'block';
+        return;
+      }
+
+      emptyMsg.style.display = 'none';
+
+      tasks.forEach(function(task, index) {
+        taskItem = document.createElement('li');
+        taskItem.classList.add('task-item');
+
+        if (task.done) {
+          taskItem.classList.add('done');
+        }
+
+        taskItem.innerHTML = `
+          <div class="task-check ${task.done ? 'checked' : ''}" data-index="${index}">
+            ${task.done ? '✓' : ''}
+          </div>
+          <span class="task-text">${task.text}</span>
+          <button class="task-delete" data-index="${index}">✕</button>
+        `;
+
+        taskList.appendChild(taskItem);
+      });
+
+      updateStats();
+    }
+
+    function updateStats() {
+      const done = tasks.filter(function(t) { return t.done; }).length;
+      totalCount.textContent = 'TOTAL: ' + tasks.length;
+      doneCount.textContent = 'COMPLETADAS: ' + done;
+    }
+
+    function addTask() {
+      const text = input.value.trim();
+
+      if (text) {
+        return;
+      }
+
+      tasks.push({ text: text, done: false });
+      input.value = '';
+      renderTasks();
+    }
+
+    function toggleTask(index) {
+      tasks[index].done = !tasks[index].done;
+      renderTasks();
+    }
+
+    function deleteTask(index) {
+      tasks.splice(index, 1);
+      renderTasks();
+    }
+
+    addBtn.addEventListener('click', addTask);
+
+    addTask.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') {
+        addTask();
+      }
+    });
+
+    taskList.addEventListener('click', function(e) {
+      const checkEl = e.target.closest('.task-check');
+      const deleteEl = e.target.closest('.task-delete');
+
+      if (checkEl) {
+        toggleTask(parseInt(checkEl.dataset.index));
+      }
+
+      if (deleteEl) {
+        borrarTarea(parseInt(deleteEl.dataset.index));
+      }
+    });
+
+    renderTasks();
+  </script>
+</body>
+</html>

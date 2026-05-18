@@ -31,18 +31,23 @@ body{
     flex-direction: column;
 }
 
-.login{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 85vh;
-}
 .login__registrar{
     width: 400px;
     height: 550px;
     align-content: center;
     justify-items: center;
+}
+#main{
+    display: flex;
+
+}
+#form{
+    display: flex;
+
+}
+#clase1{
+    justify-content: center;
+    align-items: center;
 }
 .letras{
     color: rgb(16, 16, 177);
@@ -87,21 +92,25 @@ input{
     padding-top: 10px;
     padding-right: 50px;
 }
+#main{
+    display: flex;
+    justify-content: center;
+}
+
 @media (min-width:800px){
-    .login__registrar{
-        border: 1px solid white;
-        background-color: rgb(255, 255, 255);
-        width: 400px;
-        height: 550px;
-        border-radius: 10px;
-        box-shadow: 5px 5px 5cqw 2px rgba(84, 129, 167, 0.932);
-        align-content: center;
-        justify-items: center;
-    }
     .letras{
     color: rgb(16, 16, 177);
-    margin: 115px;
-}
+    margin: 15px;
+}   #form{
+    border: 1px solid white;
+    background-color: rgb(255, 255, 255);
+    width: 400px;
+    height: 550px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5cqw 2px rgba(84, 129, 167, 0.932);
+    display: flex;
+    justify-content: center;
+}  
 }
 
 /*Decoracion de la pagian de registrarse*/
