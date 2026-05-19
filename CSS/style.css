@@ -23,6 +23,7 @@ body{
 .logo{
     width: 45px;
 }
+
 .nombre__logo{
     color: rgb(54, 39, 39);
 }
@@ -31,39 +32,25 @@ body{
     flex-direction: column;
 }
 
-.login__registrar{
+#login__registrar{
     width: 400px;
     height: 550px;
-    align-content: center;
-    justify-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;   
+    justify-content: center;
 }
 #main{
     display: flex;
 
 }
-#form{
-    display: flex;
 
-}
-#clase1{
-    justify-content: center;
-    align-items: center;
-}
 .letras{
     color: rgb(16, 16, 177);
-    margin: 115px;
     font-family: 160px;
 }
-#nombre, #correo, #password{
-    display: flex;
-    flex-direction: column;
-    border: 1px solid blue;
-    background-color: lightblue;
-}
-input{
-    border-radius: 5px;
-    margin-bottom: 10px;
-}
+
+
 .boton-registrarse{
     text-decoration: none;
 }
@@ -108,9 +95,44 @@ input{
     height: 550px;
     border-radius: 10px;
     box-shadow: 5px 5px 5cqw 2px rgba(84, 129, 167, 0.932);
-    display: flex;
-    justify-content: center;
 }  
+
+}
+@media (min-width: 480px){
+    .letras{
+        color: rgb(16, 16, 177);
+        margin: 15px;
+    }   #form{
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+    }  
+    .boton-ingres{
+        display: flex;
+        justify-content: center;
+    }
+    #boton{
+        border: 1px solid white;
+        background-color: lightblue;
+        width: 100px;
+        height: 40px;
+    }
+    #clase1{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .letras{
+        align-items: center;
+    }
+    #nombre, #correo, #password{
+        display: flex;
+        border: 1px solid blue;
+        justify-content: center;
+        background-color: lightblue;
+    }
+
 }
 
 /*Decoracion de la pagian de registrarse*/
@@ -230,6 +252,10 @@ input{
 .subtitilo{
     text-align: center;
 }
+}
+
+@media (min-width:768px){
+    
 }
 .head{
     display: block;
