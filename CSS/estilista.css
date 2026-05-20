@@ -1,0 +1,71 @@
+/* Contenedor principal de los cuadros */
+#card {
+    display: flex;
+    flex-wrap: wrap; /* Permite que si no caben, bajen a la siguiente fila */
+    gap: 20px; /* Espacio entre cuadro y cuadro */
+    padding: 20px;
+    justify-content: center; /* Centra los cuadros en la pantalla */
+    background-color: rgba(115, 172, 221, 0.2) !important; /* Opacidad más suave para que luzca limpio */
+    border-radius: 10px;
+    margin: 20px;
+}
+
+/* El diseño de cada cuadro individual (Card) */
+.vehiculo-card {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para dar volumen */
+    width: 280px; /* Ancho fijo para cada cuadro */
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    border: 1px solid #e0e0e0;
+    transition: transform 0.2s;
+}
+
+/* Efecto visual al pasar el mouse por encima del cuadro */
+.vehiculo-card:hover {
+    transform: translateY(-5px);
+}
+
+.card-header {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    font-weight: bold;
+}
+
+.lugar-badge {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.card-body {
+    padding: 15px;
+    color: #333;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.card-body p {
+    margin: 6px 0; /* Separa un poco las líneas de texto */
+}
+
+.placa-texto {
+    background-color: #f1f3f5;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: bold;
+    color: #495057;
+    letter-spacing: 1px;
+}
+
+.card-footer {
+    background-color: #f8f9fa;
+    padding: 10px 15px;
+    border-top: 1px solid #eee;
+    font-size: 15px;
+    color: #28a745; /* Color verde para el dinero */
+    font-weight: bold;
+}

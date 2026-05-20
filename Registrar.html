@@ -21,7 +21,8 @@
                 <p>Ocupados: <span id="ocupados">0</span></p>
             </div>
             <div>
-                <a href="./historial.html"><button>Ver</button></a>
+                <a href="./mostrarRegistro.html"><button>Ver</button></a>
+                <a href="./historial.html"></a>
             </div>
         </div>
 
@@ -43,7 +44,7 @@
             <label for="text">Placa del vehículo:</label><br>
             <div class="estilo__div" >
                 <b id="placaFija" style="min-width: 40px;">---</b>
-                <input type="text" id="place" maxlength="5" required id="lugar"><br>
+                <input type="text"  oninput="this.value = this.value.replace(/[^0-9]/g, '')" id="place" maxlength="5" required id="lugar" placeholder="eje:12435"><br>
             </div>
 
             <label for="text" >Fecha que ingresa:</label><br>

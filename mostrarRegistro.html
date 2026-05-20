@@ -1,35 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Historial</title>
-    <link rel="stylesheet" href="./CSS/estilista.css">
     <link rel="stylesheet" href="./CSS/estiloHisto.css">
 </head>
-
 <body>
     <header id="header">
         <div class="logo__div">
             <img src="./IMG/log.png" alt="Logo del parqueadero" class="logo">
             <p class="text">CampusParking</p>
         </div>
-
+       
         <nav id="header__nav">
             <a href="./home.html"><img src="./IMG/regresar.png" alt="Flecha de regresar" class="header__img"></a>
-
+            
             <input type="search" placeholder="🔍 Buscar por placa" class="search__input">
-
+            
             <a href="./perfil.html"><img src="./IMG/perfil.png" alt="Icono de perfil" class="perfil"></a>
         </nav>
+        
     </header>
     <main>
-        <div id="card" style="background-color: rgba(115, 172, 221, 0.74);">
-
-        </div>
+        <h2>Registros de los vehiculos ingresados</h2>
+    
+    <table border="1" id="tablaHistorial" style="width:90%; border-collapse: collapse; text-align: left;">
+        <thead>
+            <tr style="background-color: #f2f2f2;">
+                <th>Lugar</th>
+                <th>Dueño</th>
+                <th>Tipo de vehículo</th>
+                <th>Placa</th>
+                <th>Entrada</th>
+                <th>hora</th>
+                <th>Tarifa</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody id="cuerpoTabla">
+            </tbody>
+    </table>
     </main>
-    <script src="./javascripts/historial.js"></script>
+    <script src="./javascripts/mostrarRegistor.js"></script>
 </body>
-
 </html>
