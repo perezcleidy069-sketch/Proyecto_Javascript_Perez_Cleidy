@@ -25,8 +25,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const propietario = document.getElementById("propetario"); 
     const inputPlaca = document.getElementById("place");
     const tipoVehiculo = document.getElementById("car");
-    const horaIngreso = document.getElementById("hora");
-    const fechaIngreso = document.getElementById("fecha"); 
+    const fechaIngreso=document.getElementById("fecha");
+    fechaIngreso.value = new Date().toISOString().split('T')[0];
+    fechaIngreso.readOnly=true;
+
+    const horaIngreso = document.getElementById("hora")
+    horaIngreso.value= new Date().toLocaleTimeString('it-IT')
+    horaIngreso.readOnly=true;
+
     const inputFijo = document.getElementById("placaFija");
 
     function actualizarConteo() {

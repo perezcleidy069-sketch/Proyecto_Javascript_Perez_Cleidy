@@ -30,6 +30,10 @@ body{
 .imagene{
     display: flex;
     flex-direction: column;
+    border-radius: 40px;
+}
+h2{
+    margin: 10px;
 }
 
 #login__registrar{
@@ -49,7 +53,12 @@ body{
     color: rgb(16, 16, 177);
     font-family: 160px;
 }
-
+#nombre, #correo, #password{
+    border-radius: 10px;
+    height: 25px;
+    border: 1px solid blue;
+    margin: 10px;
+}
 
 .boton-registrarse{
     text-decoration: none;
@@ -70,6 +79,10 @@ body{
     border: 1px solid  rgb(114, 191, 216);
     background-color: white;
     border-radius: 15px;
+    margin: 10px;
+    width: 70px;
+    height: 40px;
+    box-shadow: 4px 4px 4px 0px rgba(216, 214, 214, 0.548);
     
 }
 
