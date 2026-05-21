@@ -1,6 +1,6 @@
-let listaUsuario=JSON.parse(localStorage.getItem('registrar')) || [];
+let listaUsuario=JSON.parse(localStorage.getItem('usuarios')) || [];
 console.log(listaUsuario)
-let correoSesion=localStorage.getItem('correoActivo')
+let correoSesion=localStorage.getItem('usuarioActivo')
  let user=listaUsuario.find(u=> u.correo===correoSesion);
 
 
@@ -34,7 +34,7 @@ document.getElementById("btn-guardar").addEventListener('click', ()=>{
     user.correo=document.getElementById("input__correo").value;
     user.contraseña=document.getElementById("input__contraseña").value;
     console.log(user)
-    localStorage.setItem('registrar', JSON.stringify (listaUsuario));
+    localStorage.setItem('usuarios', JSON.stringify (listaUsuario));
     localStorage.setItem('correoActivo', user.correo);
 
     alert("Datos actualizados ✅");

@@ -37,13 +37,17 @@ function validarDatos(e) {
     const usuarioEncontrado = listaUsuarios.find(user => 
         user.usuario === nombreVal && 
         user.correo === correoVal && 
-        (user.password === contraVal || user.contrasea === contraVal)
+        (user.password === contraVal)
     );
+    const usuarrioLoqueado=localStorage.getItem("usuarioActivo");
+    if (!usuarrioLoqueado){
+        alert("Acceso denegado. Por favor, inicia sesión primero");
+        window.location.href="./index.html;"
+    }
 
     if (usuarioEncontrado) {
         alert(`¡Inicio exitoso! Bienvenido ${usuarioEncontrado.usuario}`);
         localStorage.setItem("usuarioActivo", JSON.stringify(usuarioEncontrado));
-        window.location.href = "./home.html";
     } else {
         if (mensaje) {
             mensaje.textContent = "Datos incorrectos o usuario no registrado.";

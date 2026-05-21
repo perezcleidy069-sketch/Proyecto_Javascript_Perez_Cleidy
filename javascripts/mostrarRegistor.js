@@ -18,7 +18,7 @@ function renderMostrar() {
             <td>${reg.placa}</td>
             <td>${reg.fecha}</td>
             <td>${reg.hora}</td>
-            <td>$${reg.totalBase.toFixed(2)}</td>
+            <td>${Number(reg.totalBase).toFixed(2)}</td>
             <td>
                 <button onclick="prepararEdicion(${reg.id})" style="background:#f1c40f; color:black">Editar</button>
                 <button onclick="eliminar(${reg.id})">Eliminar</button>
@@ -40,15 +40,51 @@ window.eliminar = (id) => {
 };
 
 window.finalizar = (id) => {
-    alert("Procesando pago... ¡Vuelva pronto!");
-    window.eliminar(id);
+    let registros = JSON.parse(localStorage.getItem("registroVehiculos")) || [];
+    let vehiculo = registros.find(r => r.id === id);
+    
+    if (vehiculo) {
+        // Calcular tiempo (Simulación de tiempo transcurrido rápido para el examen)
+        const horaIngreso = new Date(`${vehiculo.fecha}T${vehiculo.hora}`);
+        const horaActual = new Date();
+        
+        // Diferencia en milisegundos a horas
+        let diferenciaHoras = (horaActual - horaIngreso) / (1000 * 60 * 60);
+        if (diferenciaHoras < 1) diferenciaHoras = 1; // Cobrar mínimo 1 hora
+        
+        // Tarifas por tipo de vehículo
+        let tarifa = 2.00; // Carro por defecto
+        if (vehiculo.tipoNombre.toLowerCase().includes("moto")) tarifa = 1.00;
+        if (vehiculo.tipoNombre.toLowerCase().includes("bici")) tarifa = 0.50;
+        
+        let totalAPagar = diferenciaHoras * tarifa;
+        
+        // Tipo de Pago (Lo que mencionabas)
+        let tipoPago = prompt(`Total a pagar: $${totalAPagar.toFixed(2)}\n¿Cómo desea pagar? (Tarjeta / Transferencia / Efectivo):`);
+        
+        if (tipoPago) {
+            alert(`Pago de $${totalAPagar.toFixed(2)} registrado con éxito vía ${tipoPago}.`);
+            
+            // Mover a un historial de ganancias antes de eliminar
+            let ganancias = JSON.parse(localStorage.getItem("gananciasTotales")) || [];
+            ganancias.push({
+                ...vehiculo,
+                totalPagado: totalAPagar,
+                tipoPago: tipoPago,
+                fechaPago: new Date().toISOString().split('T')[0]
+            });
+            localStorage.setItem("gananciasTotales", JSON.stringify(ganancias));
+            
+            window.eliminar(id); // Elimina de activos
+        }
+    }
 };
 
-document.addEventListener("DOMContentLoaded", () => {
-    cuerpoTabla = document.getElementById("cuerpoTabla"); // Ahora sí te dejará guardarlo aquí sin romper nada
-    renderMostrar();
-});
-
+//Editar 
+window.prepararEdicion=(id)=>{
+    localStorage.setItem("idParaEditar", id);
+    window.location.href="./Registrar.html";
+}
 
 // ... (Tus funciones de renderHistorial, eliminar y finalizar se quedan exactamente igual arriba)
 
@@ -89,9 +125,4 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
-window.prepararEdicion = (id) => {
-    // Guardamos en el localStorage el ID del vehículo que queremos editar
-    localStorage.setItem("idParaEditar", id);
-    // Redirigimos al usuario de vuelta al formulario (asumiendo que se llama home.html)
-    window.location.href = "./registrar";
-};
+
